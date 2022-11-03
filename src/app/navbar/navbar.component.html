@@ -1,0 +1,22 @@
+<nav class="navbar">
+    <div class="container">
+
+        <div class="col-2">
+            <p *ngIf="user">Welcome {{ user.email }} </p>
+        </div>
+
+        <div class="col-8 text-center">
+            <label for="file-upload" class="btn btn-success btn-sm" [class.disabled]="!user">
+                Upload
+                <input id="file-upload" type="file" accept="image/*" multiple (change)="uploadFiles($event)" />
+            </label>
+        </div>
+
+        <div class="col-2 text-end">
+            <button *ngIf="isAuthenticated" (click)="logout()">Log out</button>
+            <button *ngIf="!(isAuthenticated)" (click)="login()">Log in</button>
+        </div>
+
+    </div>
+
+</nav>

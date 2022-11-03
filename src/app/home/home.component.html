@@ -1,1 +1,2 @@
-<p>home works!</p>
+<app-navbar [user]="user" [isAuthenticated]="isAuthenticated" (eventPhotos)="setPhotos($event)" ></app-navbar>
+<app-photos [photosInput]="photos" [user]="user" *ngIf="isAuthenticated"></app-photos>

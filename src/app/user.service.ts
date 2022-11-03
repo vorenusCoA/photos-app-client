@@ -1,7 +1,9 @@
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+const URL = environment.serverURL + environment.userPath;
+const HEADERS = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +12,8 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getLoggedUser(): Observable<any> {
-
-    const url = "http://localhost:8080/logged-user"
-
-    return this.http.get(url)
+  public getUserOrRegister(): any {
+    return this.http.post(URL, {}, HEADERS)
   }
 
 }
